@@ -16,6 +16,7 @@ const canvas = document.querySelector("#canvas");
 canvas.width = 800;
 canvas.height = 520;
 const ctx = canvas.getContext("2d");
+let drawing = true;
 
 // setup
 const cell_width = 40;
@@ -58,7 +59,9 @@ function draw(){
         }
     }
 
-    requestAnimationFrame(draw);
+    if(drawing){
+        requestAnimationFrame(draw);
+    }
 }
 
 requestAnimationFrame(draw);
@@ -97,6 +100,7 @@ async function generateMaze(){
 
         await sleep(speed_ms);
     }
+    drawing = false;
 }
 
 generateMaze();
